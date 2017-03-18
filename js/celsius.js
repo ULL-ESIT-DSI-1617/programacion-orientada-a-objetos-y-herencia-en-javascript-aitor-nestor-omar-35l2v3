@@ -1,7 +1,11 @@
+/**
+ * Created by chinegua on 18/3/17.
+ */
+
 
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
-class Medida {
-    constructor(x) {
+class celsius {
+    constructor() {
 
         var regexp = /([-+]?\d+(?:\.\d*)?)\s*([fFcC])/;
 
@@ -17,6 +21,10 @@ class Medida {
         //-----------------
 
 
+    }
+    calculate(){
+        console.log("Hola");
+        converted.innerHTML = "Hola";
     }
 
     get_val(){
@@ -36,6 +44,3 @@ class Medida {
         this.unit = x;
     }
 }
-
-
-
