@@ -1,5 +1,5 @@
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
-class Celsius extends Medida{
+class Celsius extends Temperatura{
     constructor(x){
         super(x)
 
