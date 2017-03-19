@@ -1,20 +1,20 @@
 "use strict";
 class Temperatura extends Medida{
     constructor(x){
-        super(x)
+        super(x);
     }
 
     get_val(){
-        let val = super.val;
-        return val.toString();
+        let val = super.get_val();
+        return val;
     }
 
     set_val(x){
         super.val = x;
     }
     get_unit(){
-        let unit = super.unit;
-        return unit.toString();
+        let unit = super.get_val();
+        return unit;
     }
 
     set_unit(x){

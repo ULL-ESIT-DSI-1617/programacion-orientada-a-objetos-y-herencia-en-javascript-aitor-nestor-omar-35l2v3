@@ -1,12 +1,12 @@
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
 class Celsius extends Temperatura{
     constructor(x){
-        super(x)
+        super(x);
 
     }
 
-    toFarenheit(){
-        let cel = super.get_val();
+    toFahrenheit(){
+        let cel = super.get_val()
         let aux = cel * (9/5) + 32;
         return aux;
     }
