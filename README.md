@@ -2,8 +2,9 @@
 Enlace a la [descripción de la práctica](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicaoop.html)
 
 ### Instrucciones de uso
-  * Para hacer login: Acceder a "/login"
+  * Para hacer login: Acceder a "/login
   * Usuarios y passwords válidas: aitor/nestor/omar/dsi1617 y 123aitor/nestor123/omar123/dsi1617password
+  * Para hacer logout: Acceder a "/logout
 # Desarrollo de Sistemas Informáticos
 Enlace al [campus virtual](https://campusvirtual.ull.es/1617/course/view.php?id=1136)
 
