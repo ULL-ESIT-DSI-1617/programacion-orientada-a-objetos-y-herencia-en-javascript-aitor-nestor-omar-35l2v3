@@ -23,3 +23,8 @@
   * [Cookie expressJS](cookie-express.md)
   * [Sessions expressJS](session.md)
 	* [Query string](query_string.md)
+
+* [Objetos en JavaScript](objects.md)
+	* [Objetos y propiedades](op.md)
+	* [Constructor de un objeto en JavaScript](const.md)
+	* [Referenciación, getters y setters](ref.md)
