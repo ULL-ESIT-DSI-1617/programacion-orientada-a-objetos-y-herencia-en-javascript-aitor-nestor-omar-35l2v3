@@ -3,7 +3,7 @@
 class Medida {
     constructor(x) {
 
-        var regexp = /([-+]?\d+(?:\.\d*)?)\s*([fFcC])/;
+        var regexp = /([-+]?\d+(?:\.\d*)?)\s*([fFcCkK])/;
 
         aux = x.toString();
         // aux = aux.split(" "); // Guardamos en variable string para poder hacer el split
@@ -36,6 +36,3 @@ class Medida {
         this.unit = x;
     }
 }
-
-
-
