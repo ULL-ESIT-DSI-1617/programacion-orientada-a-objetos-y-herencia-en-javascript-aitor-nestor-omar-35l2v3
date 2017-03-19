@@ -20,11 +20,11 @@ Enlace al GitBook desplegado en [Heroku]()
 
 # Versión gh-pages
 
-Enlace al libro en [gh-pages]()
+Enlace al libro en [gh-pages](https://ull-esit-dsi-1617.github.io/programacion-orientada-a-objetos-y-herencia-en-javascript-aitor-nestor-omar-35l2v3/)
 
 # Versión GitBook
 
-Enlace al libro en [GitBook]()
+Enlace al libro en [GitBook](https://nestor-gm.gitbooks.io/programacion-orientada-a-objetos-y-herencia/content/)
 
 # Autores
 * [Aitor Bernal Falcón](https://chinegua.github.io/)
