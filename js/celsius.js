@@ -1,46 +1,25 @@
-/**
- * Created by chinegua on 18/3/17.
- */
-
-
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
-class celsius {
-    constructor() {
-
-        var regexp = /([-+]?\d+(?:\.\d*)?)\s*([fFcC])/;
-
-        aux = x.toString();
-        // aux = aux.split(" "); // Guardamos en variable string para poder hacer el split
-
-        var aux = aux.match(regexp);
-        console.log(aux);
-
-        //----------------- GUARDAMOS EN VARIABLES DEL OBJETO
-        this.val = aux[1];
-        this.unit = aux[2];
-        //-----------------
-
+class Celsius extends Medida{
+    constructor(x){
+        super(x)
 
     }
-    calculate(){
-        console.log("Hola");
-        converted.innerHTML = "Hola";
+
+    toFarenheit(){
+        let cel = super.get_val();
+        let aux = cel * (9/5) + 32;
+        return aux;
     }
 
-    get_val(){
-        let val = this.val;
-        return val.toString();
+    toKelvin(){
+        let cel = super.get_val();
+        let aux = parseInt(cel) + 273.15;
+        return aux;
     }
 
-    set_val(x){
-        this.val = x;
-    }
-    get_unit(){
-        let unit = this.unit;
-        return unit.toString();
+    toCelcius(){
+        return super.get_val();
     }
 
-    set_unit(x){
-        this.unit = x;
-    }
+
 }
