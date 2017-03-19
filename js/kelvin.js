@@ -6,8 +6,9 @@ class Kelvin extends Temperatura{
 
     toCelsius(){                          //Paso de Kelvin a Celsius
         let self = super.get_val();
-        let aux = self - 273.15;
-        return aux;
+        let k2c = self - 273.15;
+        return k2c;
+
     }
 
     toKelvin(){
