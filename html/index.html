@@ -19,9 +19,10 @@
             }
 
             else if (from[2] == 'F' || from[2] == 'f' ){
-                console.log("Es Farenheir")
-                //p = new Farenheit(aux[0]);
-                converted.innerHTML = "Aún no está la clase Farenheit";
+                console.log("Es Fahrenheit")
+                p = new Fahrenheit(aux[0]);
+                console.log(p.get_val());
+                //converted.innerHTML = "Aún no está la clase Farenheit";
             }
 
             else if (from[2] == 'K' || from[2] == 'k' ){
@@ -38,8 +39,8 @@
                 converted.innerHTML = "La temperatura es " + p.toCelcius();
             }
             else if (to_ == 'F' || to_ == 'f' ){
-                console.log("A Farenheir");
-                converted.innerHTML = "La temperatura es " + p.toFarenheit();
+                console.log("A Fahrenheit");
+                converted.innerHTML = "La temperatura es " + p.toFahrenheit();
             }
             else if (to_ == 'K' || to_ == 'k' ){
                 console.log("A Kelvin");
