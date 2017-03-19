@@ -1,17 +1,20 @@
 # Práctica: Programación orientada a objetos y Herencia en JavaScript
 Enlace a la [descripción de la práctica](https://casianorodriguezleon.gitbooks.io/ull-esit-1617/content/practicas/practicaoop.html)
 
+### Instrucciones de uso
+  * Para hacer login: Acceder a "/login"
+  * Usuarios y passwords válidas: aitor/nestor/omar/dsi1617 y 123aitor/nestor123/omar123/dsi1617password
 # Desarrollo de Sistemas Informáticos
 Enlace al [campus virtual](https://campusvirtual.ull.es/1617/course/view.php?id=1136)
 
 # Versión en IAAS
 El concepto de Infraestructura como Servicio (IaaS, Infrastructure as a Service) es uno de los tres modelos fundamentales en el campo del cloud computing, junto con el de Plataforma como Servicio (PaaS, Platform as a Service) y el de Software como Servicio (SaaS, Software as a Service).
 
-Enlace al GitBook desplegado en el IAAS de la ULL [(Aitor)]()
+Enlace al GitBook desplegado en el IAAS de la ULL [(Aitor)](http://10.6.128.132:8089/login)
 
-Enlace al GitBook desplegado en el IAAS de la ULL [(Néstor)]()
+Enlace al GitBook desplegado en el IAAS de la ULL [(Néstor)](http://10.6.128.125:8088/login)
 
-Enlace al GitBook desplegado en el IAAS de la ULL [(Omar)]()
+Enlace al GitBook desplegado en el IAAS de la ULL [(Omar)](http://10.6.128.26:8090/login)
 
 # Versión HEROKU
 [Heroku](https://devcenter.heroku.com/categories/learning) es una plataforma como servicio de computación en la Nube que soporta distintos lenguajes de programación.
