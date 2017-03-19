@@ -1,23 +1,23 @@
-function Temperatura(val, unit) {
-    Medida.call(this, val, unit)
-  };
-  Temperatura.prototype = new Medida();               //Tipo de herencia mediante prototipo
-  Temperatura.prototype.contructor = Temperatura;
+"use strict";
+class Temperatura extends Medida{
+    constructor(x){
+        super(x)
+    }
 
-  get_val(){
-      let val = this.val;
-      return val.toString();
-  }
+    get_val(){
+        let val = super.val;
+        return val.toString();
+    }
 
-  set_val(x){
-      this.val = x;
-  }
-  get_unit(){
-      let unit = this.unit;
-      return unit.toString();
-  }
+    set_val(x){
+        super.val = x;
+    }
+    get_unit(){
+        let unit = super.unit;
+        return unit.toString();
+    }
 
-  set_unit(x){
-      this.unit = x;
-  }
+    set_unit(x){
+        super.unit = x;
+    }
 }
