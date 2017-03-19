@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introducción · GitBook</title>
+        <title>ExpressJS · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="node.html" />
+    <link rel="next" href="expressjs.html" />
     
+    
+    <link rel="prev" href="c9.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -274,7 +276,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="expressjs.html">
+        <li class="chapter active" data-level="1.7" data-path="expressjs.html">
             
                 <a href="expressjs.html">
             
@@ -288,7 +290,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="expressjs.html">
+        <li class="chapter active" data-level="1.7.1" data-path="expressjs.html">
             
                 <a href="expressjs.html">
             
@@ -523,7 +525,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introducción</a>
+        <a href="." >ExpressJS</a>
     </h1>
 </div>
 
@@ -538,29 +540,63 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tareas-iniciales">Tareas Iniciales</h1>
+                                <h1 id="primeros-pasos-en-expressjs">Primeros pasos en ExpressJS</h1>
+<h2 id="instalando-expressjs">Instalando ExpressJS</h2>
+<p>Suponiendo que ya haya instalado Node.js, cree un directorio que contenga su aplicaci&#xF3;n y haga que sea su directorio de trabajo.</p>
+<p>Usa el comando npm init para crear el fichero package.json para tu aplicaci&#xF3;n.</p>
+<p>Ahora instalamos express en la aplicaci&#xF3;n</p>
+<pre><code>npm install express
+</code></pre><p>Para a&#xF1;adirlo a las dependencias <code>--save</code></p>
+<h2 id="introducci&#xF3;n-a-expressjs">Introducci&#xF3;n a ExpressJS</h2>
+<p>Direccionamiento se refiere a determinar c&#xF3;mo una aplicaci&#xF3;n responde a una solicitud de cliente a un extremo determinado, que es un URI (o ruta) y un m&#xE9;todo de solicitud HTTP espec&#xED;fico (GET, POST, etc.).
+Cada ruta puede tener una o m&#xE1;s funciones del manejador, que se ejecutan cuando la ruta es correspondida
+La definici&#xF3;n de ruta tiene la siguiente estructura</p>
+<pre><code class="lang-javascript">app.METHOD(PATH, HANDLER)
+</code></pre>
+<p>D&#xF3;nde:</p>
 <ul>
-<li>Documentaci&#xF3;n nodeJS<ul>
-<li>npm</li>
-<li>Package.JSON</li>
-<li>Gulp</li>
+<li>app es una instancia de express.</li>
+<li>METHOD es un m&#xE9;todo de solicitud HTTP, en min&#xFA;sculas.</li>
+<li>PATH es una ruta de acceso en el servidor.</li>
+<li>HANDLER es la funci&#xF3;n ejecutada cuando se compara la ruta.</li>
 </ul>
+<p><strong>Ejemplos:</strong></p>
+<p>Responda con Hello World! en la p&#xE1;gina inicial:</p>
+<pre><code class="lang-javascript">app.get(<span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
+  res.send(<span class="hljs-string">&apos;Hello World!&apos;</span>)
+})
+</code></pre>
+<ul>
+<li>Un ejemplo funcional del <a href="https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-aitor-nestor-omar-35l2/blob/master/src/basic_scripts/b1-get.js" target="_blank">m&#xE9;todo de solicitud GET</a></li>
+</ul>
+<p>Responda a la solicitud POST en la ruta ra&#xED;z (/), la p&#xE1;gina de inicio de la aplicaci&#xF3;n:</p>
+<pre><code class="lang-javascript">app.post(<span class="hljs-string">&apos;/&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
+  res.send(<span class="hljs-string">&apos;Got a POST request&apos;</span>)
+})
+</code></pre>
+<ul>
+<li>Un ejemplo funcional del <a href="https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-aitor-nestor-omar-35l2/blob/master/src/basic_scripts/b2-post.js" target="_blank">m&#xE9;todo de solicitud POST</a></li>
+</ul>
+<p>Responda a una solicitud PUT en la ruta /user:</p>
+<pre><code class="lang-javascript">app.put(<span class="hljs-string">&apos;/user&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
+  res.send(<span class="hljs-string">&apos;Got a PUT request at /user&apos;</span>)
+})
+</code></pre>
+<ul>
+<li>Un ejemplo funcional del <a href="https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-aitor-nestor-omar-35l2/blob/master/src/basic_scripts/b3-put.js" target="_blank">m&#xE9;todo de solicitud PUT</a></li>
+</ul>
+<p>Responda a una solicitud DELETE en la ruta /user:</p>
+<pre><code class="lang-javascript">app.delete(<span class="hljs-string">&apos;/user&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) </span>{
+  res.send(<span class="hljs-string">&apos;Got a DELETE request at /user&apos;</span>);
+});
+</code></pre>
+<ul>
+<li><p>Un ejemplo funcional del <a href="https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-aitor-nestor-omar-35l2/blob/master/src/basic_scripts/b4-delete.js" target="_blank">m&#xE9;todo de solicitud DELETE</a></p>
 </li>
-<li>Documentacion GH-Pages</li>
-<li>Github</li>
-<li>Pandoc</li>
-<li>Cloud9</li>
+<li><p>Ejemplo con los diferentes <a href="https://github.com/ULL-ESIT-DSI-1617/estudiar-las-rutas-en-expressjs-aitor-nestor-omar-35l2/blob/master/src/basic_scripts/b_all.js" target="_blank">m&#xE9;todos de solicitud HTTP</a> en ExpressJS</p>
+</li>
 </ul>
-<h1 id="versi&#xF3;n-en-gh-pages">Versi&#xF3;n en GH-Pages</h1>
-<p><a href="https://chinegua.github.io/tareas-iniciales-aitor-nestor-omar/" target="_blank">GH-Pages</a></p>
-<h1 id="versi&#xF3;n-gitbook">Versi&#xF3;n Gitbook</h1>
-<p><a href="https://chinegua.gitbooks.io/tareas-iniciales-aitornestoromar/content/" target="_blank">Gitbook</a></p>
-<h1 id="autores">Autores</h1>
-<ul>
-<li><a href="https://chinegua.github.io/" target="_blank">Aitor Bernal Falc&#xF3;n</a></li>
-<li><a href="https://nestor-gm.github.io/" target="_blank">N&#xE9;stor Garc&#xED;a Moreno</a></li>
-<li><a href="https://ozzrocker95.github.io/" target="_blank">Omar Mendo Mesa</a></li>
-</ul>
+<p>Para obtener m&#xE1;s detalles sobre el direccionamiento, consulte la <a href="express_avanzado.html">gu&#xED;a</a></p>
 
                                 
                                 </section>
@@ -588,8 +624,12 @@
 
             
                 
+                <a href="c9.html" class="navigation navigation-prev " aria-label="Previous page: Cloud9">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="node.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Node.js">
+                
+                <a href="expressjs.html" class="navigation navigation-next " aria-label="Next page: Introducción a ExpressJS">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -600,7 +640,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introducción","level":"1.1","depth":1,"next":{"title":"Node.js","level":"1.2","depth":1,"path":"node.md","ref":"node.md","articles":[{"title":"npm","level":"1.2.1","depth":2,"path":"npm.md","ref":"npm.md","articles":[]},{"title":"Package.JSON","level":"1.2.2","depth":2,"path":"package_json.md","ref":"package_json.md","articles":[]},{"title":"Gulp","level":"1.2.3","depth":2,"path":"gulp.md","ref":"gulp.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"README.md","mtime":"2017-03-19T20:00:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-19T20:04:03.081Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ExpressJS","level":"1.7","depth":1,"next":{"title":"Introducción a ExpressJS","level":"1.7.1","depth":2,"path":"expressjs.md","ref":"expressjs.md","articles":[]},"previous":{"title":"Cloud9","level":"1.6","depth":1,"path":"c9.md","ref":"c9.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"expressjs.md","mtime":"2017-03-19T20:00:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-19T20:04:03.081Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

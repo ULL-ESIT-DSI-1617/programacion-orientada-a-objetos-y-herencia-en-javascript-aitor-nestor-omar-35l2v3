@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introducción · GitBook</title>
+        <title>HTTP Cookie · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="node.html" />
+    <link rel="next" href="set-cookie.html" />
     
+    
+    <link rel="prev" href="cookies-sessions.md" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -346,7 +348,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="http.html">
+        <li class="chapter active" data-level="1.8.1" data-path="http.html">
             
                 <a href="http.html">
             
@@ -523,7 +525,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introducción</a>
+        <a href="." >HTTP Cookie</a>
     </h1>
 </div>
 
@@ -538,29 +540,52 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tareas-iniciales">Tareas Iniciales</h1>
+                                <h1 id="http-cookie">HTTP Cookie</h1>
+<p>Una cookie HTTP (cookie web, cookie del navegador) es un peque&#xF1;o fragmento de datos que un servidor env&#xED;a al navegador web del usuario, que puede almacenarlo y devolverlo junto con la siguiente solicitud al mismo servidor.</p>
+<p>Por lo general, se utiliza para saber si dos solicitudes proced&#xED;an del mismo navegador, lo que permite mantener un usuario conectado, por ejemplo.</p>
+<hr>
+<p>Las cookies se utilizan principalmente para estos tres prop&#xF3;sitos:</p>
 <ul>
-<li>Documentaci&#xF3;n nodeJS<ul>
-<li>npm</li>
-<li>Package.JSON</li>
-<li>Gulp</li>
+<li>Gesti&#xF3;n de sesiones (inicios de sesi&#xF3;n de usuarios, carritos de compras)</li>
+<li>Personalizaci&#xF3;n (preferencias del usuario)</li>
+<li>Seguimiento (an&#xE1;lisis del comportamiento del usuario)</li>
 </ul>
-</li>
-<li>Documentacion GH-Pages</li>
-<li>Github</li>
-<li>Pandoc</li>
-<li>Cloud9</li>
-</ul>
-<h1 id="versi&#xF3;n-en-gh-pages">Versi&#xF3;n en GH-Pages</h1>
-<p><a href="https://chinegua.github.io/tareas-iniciales-aitor-nestor-omar/" target="_blank">GH-Pages</a></p>
-<h1 id="versi&#xF3;n-gitbook">Versi&#xF3;n Gitbook</h1>
-<p><a href="https://chinegua.gitbooks.io/tareas-iniciales-aitornestoromar/content/" target="_blank">Gitbook</a></p>
-<h1 id="autores">Autores</h1>
-<ul>
-<li><a href="https://chinegua.github.io/" target="_blank">Aitor Bernal Falc&#xF3;n</a></li>
-<li><a href="https://nestor-gm.github.io/" target="_blank">N&#xE9;stor Garc&#xED;a Moreno</a></li>
-<li><a href="https://ozzrocker95.github.io/" target="_blank">Omar Mendo Mesa</a></li>
-</ul>
+<p>Las cookies tambi&#xE9;n se han utilizado para el almacenamiento general del lado del cliente. Si bien este uso podr&#xED;a haber sido considerado leg&#xED;timo en un momento en que no hab&#xED;a otra forma de almacenar datos en el lado del cliente, ya no es el caso, hoy en d&#xED;a, donde los navegadores web son capaces de utilizar varias API de almacenamiento.</p>
+<p>Las API nuevas a considerar para el almacenamiento local son la API de almacenamiento Web (<strong>localStorage</strong> y <strong>sessionStorage</strong>) y <strong>IndexedDB</strong>.</p>
+<h2 id="creando-cookies">Creando cookies</h2>
+<p>Al recibir una petici&#xF3;n HTTP, un servidor puede enviar un encabezado Set-Cookie con la respuesta.</p>
+<p>La cookie normalmente se almacena en el navegador y, posteriormente, se env&#xED;a el valor de la cookie junto con cada solicitud hecha al mismo servidor que el contenido de un encabezado HTTP de Cookie.</p>
+<p>Adem&#xE1;s, se puede especificar un retraso de caducidad as&#xED; como restricciones a un dominio y una ruta espec&#xED;ficos, limitando el tiempo y el sitio al que se env&#xED;a la cookie.</p>
+<h2 id="set-cookie">Set-cookie</h2>
+<p>El encabezado de respuesta HTTP <a href="set-cookie.html">Set-Cookie</a> se utiliza para enviar cookies desde el servidor al agente de usuario (navegador). Una cookie sencilla se puede configurar de la siguiente manera:</p>
+<pre><code>Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;
+</code></pre><p>El servidor le dice al cliente que almacene una cookie. La respuesta enviada al navegador contendr&#xE1; el encabezado Set-Cookie y el navegador almacenar&#xE1; la cookie :</p>
+<pre><code>HTTP/1.0 200 OK
+Content-type: text/html
+Set-Cookie: yummy_cookie=choco
+Set-Cookie: tasty_cookie=strawberry
+
+[page content]
+</code></pre><p>Ahora, con cada nueva solicitud al servidor, el navegador enviar&#xE1; todas las cookies previamente almacenadas al servidor usando el encabezado Cookie:</p>
+<pre><code>GET /sample_page.html HTTP/1.1
+Host: www.example.org
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry
+</code></pre><h2 id="cookies-permanentes">Cookies permanentes</h2>
+<p>En lugar de expirar cuando el cliente est&#xE9; cerrado, las cookies permanentes caducan en una fecha espec&#xED;fica (expiran) o despu&#xE9;s de un per&#xED;odo de tiempo espec&#xED;fico (Max-Age):</p>
+<pre><code>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
+</code></pre><h2 id="seguridad-en-cookies-y-httponly-cookies">Seguridad en cookies y HttpOnly cookies</h2>
+<p>Una cookie segura s&#xF3;lo se enviar&#xE1; al servidor cuando se realice una solicitud utilizando SSL y el protocolo HTTPS.</p>
+<p>Para evitar ataques de secuencias de comandos entre sitios (XSS), las cookies HttpOnly
+no son accesibles a trav&#xE9;s de JavaScript a trav&#xE9;s de la propiedad Document.cookie.  </p>
+<p>Cuando no necesitamos las cookies disponibles en javascript, podemos indiciarle el flag de HttpOnly</p>
+<pre><code>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
+</code></pre><h2 id="acceso-javascript-mediante-documentcookies">Acceso JavaScript mediante Document.cookies</h2>
+<p>Tambi&#xE9;n se pueden crear nuevas cookies con la propiedad Document.cookie y si no se establece el indicador <strong>HttpOnly</strong>, tambi&#xE9;n se puede acceder a las cookies existentes desde JavaScript.</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">document</span>.cookie = <span class="hljs-string">&quot;yummy_cookie=choco&quot;</span>;
+<span class="hljs-built_in">document</span>.cookie = <span class="hljs-string">&quot;tasty_cookie=strawberry&quot;</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">document</span>.cookie);
+<span class="hljs-comment">// logs &quot;yummy_cookie=choco; tasty_cookie=strawberry</span>
+</code></pre>
 
                                 
                                 </section>
@@ -588,8 +613,12 @@
 
             
                 
+                <a href="cookies-sessions.md" class="navigation navigation-prev " aria-label="Previous page: Cookies y Sessions">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="node.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Node.js">
+                
+                <a href="set-cookie.html" class="navigation navigation-next " aria-label="Next page: set-cookie">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -600,7 +629,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introducción","level":"1.1","depth":1,"next":{"title":"Node.js","level":"1.2","depth":1,"path":"node.md","ref":"node.md","articles":[{"title":"npm","level":"1.2.1","depth":2,"path":"npm.md","ref":"npm.md","articles":[]},{"title":"Package.JSON","level":"1.2.2","depth":2,"path":"package_json.md","ref":"package_json.md","articles":[]},{"title":"Gulp","level":"1.2.3","depth":2,"path":"gulp.md","ref":"gulp.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"README.md","mtime":"2017-03-19T20:00:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-19T20:04:03.081Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"HTTP Cookie","level":"1.8.1","depth":2,"next":{"title":"set-cookie","level":"1.8.2","depth":2,"path":"set-cookie.md","ref":"set-cookie.md","articles":[]},"previous":{"title":"Cookies y Sessions","level":"1.8","depth":1,"path":"cookies-sessions.md","ref":"cookies-sessions.md","articles":[{"title":"HTTP Cookie","level":"1.8.1","depth":2,"path":"http.md","ref":"http.md","articles":[]},{"title":"set-cookie","level":"1.8.2","depth":2,"path":"set-cookie.md","ref":"set-cookie.md","articles":[]},{"title":"Cookie module","level":"1.8.3","depth":2,"path":"cookie.md","ref":"cookie.md","articles":[]},{"title":"Cookie expressJS","level":"1.8.4","depth":2,"path":"cookie-express.md","ref":"cookie-express.md","articles":[]},{"title":"Sessions expressJS","level":"1.8.5","depth":2,"path":"session.md","ref":"session.md","articles":[{"title":"Query string","level":"1.8.5.1","depth":3,"path":"query_string.md","ref":"query_string.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":[],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"http.md","mtime":"2017-03-19T20:00:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-19T20:04:03.081Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introducción · GitBook</title>
+        <title>Referenciación, getters y setters · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.2">
@@ -57,8 +57,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="node.html" />
     
+    <link rel="prev" href="const.html" />
     
 
     </head>
@@ -87,7 +87,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -475,7 +475,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3" data-path="ref.html">
+        <li class="chapter active" data-level="1.9.3" data-path="ref.html">
             
                 <a href="ref.html">
             
@@ -523,7 +523,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introducción</a>
+        <a href="." >Referenciación, getters y setters</a>
     </h1>
 </div>
 
@@ -538,29 +538,58 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="tareas-iniciales">Tareas Iniciales</h1>
-<ul>
-<li>Documentaci&#xF3;n nodeJS<ul>
-<li>npm</li>
-<li>Package.JSON</li>
-<li>Gulp</li>
-</ul>
-</li>
-<li>Documentacion GH-Pages</li>
-<li>Github</li>
-<li>Pandoc</li>
-<li>Cloud9</li>
-</ul>
-<h1 id="versi&#xF3;n-en-gh-pages">Versi&#xF3;n en GH-Pages</h1>
-<p><a href="https://chinegua.github.io/tareas-iniciales-aitor-nestor-omar/" target="_blank">GH-Pages</a></p>
-<h1 id="versi&#xF3;n-gitbook">Versi&#xF3;n Gitbook</h1>
-<p><a href="https://chinegua.gitbooks.io/tareas-iniciales-aitornestoromar/content/" target="_blank">Gitbook</a></p>
-<h1 id="autores">Autores</h1>
-<ul>
-<li><a href="https://chinegua.github.io/" target="_blank">Aitor Bernal Falc&#xF3;n</a></li>
-<li><a href="https://nestor-gm.github.io/" target="_blank">N&#xE9;stor Garc&#xED;a Moreno</a></li>
-<li><a href="https://ozzrocker95.github.io/" target="_blank">Omar Mendo Mesa</a></li>
-</ul>
+                                <h1 id="referenciaci&#xF3;n-getters-y-setters">Referenciaci&#xF3;n, getters y setters</h1>
+<h3 id="referencia-con-this">Referencia con this</h3>
+<p>JavaScript tiene una palabra clave especial, <strong>this</strong>, que se puede utilizar dentro de un m&#xE9;todo para referirse al objeto actual. Por ejemplo, supongamos que tenemos una funci&#xF3;n llamada <strong>validar</strong> que valida el valor de la propiedad de un objeto, teniendo en cuenta al objeto y los valores altos y bajos:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validar</span>(<span class="hljs-params">objeto, valoralto, valorbajo</span>) </span>{
+  <span class="hljs-keyword">if</span> ((objeto.value &lt; valoralto) || (objeto.value &gt; valorbajo))
+    alert(<span class="hljs-string">&quot;Valores no v&#xE1;lidos!&quot;</span>);
+}
+</code></pre>
+<p>Entonces, se podr&#xED;a llamar a validar en el controlador de eventos <strong>onchange</strong> de cada elemento del formulario, usando <strong>this</strong> para pasarle el elemento, como en el siguiente ejemplo:</p>
+<pre><code class="lang-javascript">&lt;input type=<span class="hljs-string">&quot;text&quot;</span> name=<span class="hljs-string">&quot;edad&quot;</span> size=<span class="hljs-string">&quot;3&quot;</span>
+  onChange=<span class="hljs-string">&quot;validar(this, 18, 99)&quot;</span>&gt;
+</code></pre>
+<p>En general, <strong>this</strong> se refiere al objeto de llamada en un m&#xE9;todo.</p>
+<p>Otro tipo de referenciaci&#xF3;n ser&#xED;a con <strong>super</strong>, trabajando igual que <strong>this</strong>:</p>
+<pre><code class="lang-javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Fahrenheit</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Temperatura</span></span>{
+    <span class="hljs-keyword">constructor</span>(x){
+        <span class="hljs-keyword">super</span>(x)
+    }
+</code></pre>
+<p>Para hacer referencia a objetos de la clase Temperatura, se realizar&#xED;a as&#xED;:</p>
+<pre><code class="lang-javascript">get_val(){
+    <span class="hljs-keyword">let</span> val = <span class="hljs-keyword">super</span>.val;
+    <span class="hljs-keyword">return</span> val.toString();
+}
+</code></pre>
+<h3 id="getters-y-setters">Getters y setters</h3>
+<p>Un <strong>getter</strong> es un m&#xE9;todo que obtiene el valor de una propiedad espec&#xED;fica. Un <strong>setter</strong> es un m&#xE9;todo que establece el valor de una propiedad espec&#xED;fica. Puede definir <em>getters y setters</em> de cualquier objeto predefinido del n&#xFA;cleo o de un objeto definido por el usuario que admita la adici&#xF3;n de nuevas caracter&#xED;sticas. La sintaxis para definir <em>getter y setters</em> utiliza la sintaxis literal de un objeto.</p>
+<p>Un ejemplo del uso de getters y setters se refleja a continuaci&#xF3;n.</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Temperatura</span>(<span class="hljs-params">val, unit</span>) </span>{
+    Medida.call(<span class="hljs-keyword">this</span>, val, unit)
+  };
+  Temperatura.prototype = <span class="hljs-keyword">new</span> Medida();               <span class="hljs-comment">//Tipo de herencia mediante prototipo</span>
+  Temperatura.prototype.contructor = Temperatura;
+
+  get_val(){
+      <span class="hljs-keyword">let</span> val = <span class="hljs-keyword">this</span>.val;
+      <span class="hljs-keyword">return</span> val.toString();
+  }
+
+  set_val(x){
+      <span class="hljs-keyword">this</span>.val = x;
+  }
+  get_unit(){
+      <span class="hljs-keyword">let</span> unit = <span class="hljs-keyword">this</span>.unit;
+      <span class="hljs-keyword">return</span> unit.toString();
+  }
+
+  set_unit(x){
+      <span class="hljs-keyword">this</span>.unit = x;
+  }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -588,10 +617,10 @@
 
             
                 
-                
-                <a href="node.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Node.js">
-                    <i class="fa fa-angle-right"></i>
+                <a href="const.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Constructor de un objeto en JavaScript">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -600,7 +629,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introducción","level":"1.1","depth":1,"next":{"title":"Node.js","level":"1.2","depth":1,"path":"node.md","ref":"node.md","articles":[{"title":"npm","level":"1.2.1","depth":2,"path":"npm.md","ref":"npm.md","articles":[]},{"title":"Package.JSON","level":"1.2.2","depth":2,"path":"package_json.md","ref":"package_json.md","articles":[]},{"title":"Gulp","level":"1.2.3","depth":2,"path":"gulp.md","ref":"gulp.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"README.md","mtime":"2017-03-19T20:00:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-19T20:04:03.081Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Referenciación, getters y setters","level":"1.9.3","depth":2,"previous":{"title":"Constructor de un objeto en JavaScript","level":"1.9.2","depth":2,"path":"const.md","ref":"const.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"ref.md","mtime":"2017-03-19T20:00:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-03-19T20:04:03.081Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
