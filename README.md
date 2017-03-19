@@ -7,6 +7,7 @@ Enlace a la [descripción de la práctica](https://casianorodriguezleon.gitbooks
    Credenciales válidas: aitor/nestor/omar/dsi1617 y sus passwords: 123aitor/nestor123/omar123/dsi1617password
    
    Para hacer logout: Acceder a ```/logout```
+   
    Para cambiar contraseña y hacer más acciones de perfil  acceder a ```/profile```
 # Desarrollo de Sistemas Informáticos
 Enlace al [campus virtual](https://campusvirtual.ull.es/1617/course/view.php?id=1136)
