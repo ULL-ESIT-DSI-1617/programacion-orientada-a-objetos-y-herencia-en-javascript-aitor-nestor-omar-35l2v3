@@ -5,9 +5,9 @@ class Kelvin extends Temperatura{
     }
 
     toCelsius(){                          //Paso de Kelvin a Celsius
-        let self = super.get_val();
-        let k2c = self - 273.15;
-        return k2c;
+        let cel = super.get_val();
+        let aux = cel - 273.15;
+        return aux;
 
     }
 
@@ -16,8 +16,8 @@ class Kelvin extends Temperatura{
     }
 
     toFahrenheit(){                       //Paso de Kelvin a Fahrenheit
-        let self = super.get_val();
-        let aux = self * (9/5) - 459.67;
-        return aux; 
+        let cel = super.get_val();
+        let aux = cel * (9/5) - 459.67;
+        return aux;
     }
 }
